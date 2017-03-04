@@ -12,3 +12,17 @@
 \\vdi-ist-fs01\uemprofiles$\wood198\Documents\Visual Studio 2015\Projects\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator.csproj.GenerateResource.Cache
 \\vdi-ist-fs01\uemprofiles$\wood198\Documents\Visual Studio 2015\Projects\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator.exe
 \\vdi-ist-fs01\uemprofiles$\wood198\Documents\Visual Studio 2015\Projects\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator.pdb
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\bin\Debug\AdvancedCalculator.exe.config
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator.exe
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator.pdb
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\bin\Debug\AdvancedCalculator.exe
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\bin\Debug\AdvancedCalculator.pdb
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator.csprojResolveAssemblyReference.cache
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\MainWindow.g.cs
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\App.g.cs
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator_MarkupCompile.cache
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator_MarkupCompile.lref
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\MainWindow.baml
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator.g.resources
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator.Properties.Resources.resources
+C:\Users\exper\Documents\VisualCalculator\AdvancedCalculator\AdvancedCalculator\obj\Debug\AdvancedCalculator.csproj.GenerateResource.Cache

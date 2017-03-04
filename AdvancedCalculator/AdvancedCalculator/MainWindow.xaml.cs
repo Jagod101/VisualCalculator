@@ -26,12 +26,20 @@ namespace AdvancedCalculator
         }
 
         String currentNum = "";
-        int first = 0;
+        String decimalNum = "";
+        double first = 0;
+        double angleNum;
+        double sqrNum;
         bool second = false;
         bool multi = false;
         bool divide = false;
         bool add = false;
         bool subtract = false;
+        bool func_cos = false;
+        bool func_sin = false;
+        bool func_tan = false;
+        bool func_sqrt = false;
+        bool squared = false;
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
@@ -175,7 +183,7 @@ namespace AdvancedCalculator
 
         private void Multiply_Click(object sender, RoutedEventArgs e)
         {
-            first = Int32.Parse(currentNum);
+            first = double.Parse(currentNum);
             multi = true;
             second = true;
             currentNum = "";
@@ -183,7 +191,7 @@ namespace AdvancedCalculator
 
         private void Divide_Click(object sender, RoutedEventArgs e)
         {
-            first = Int32.Parse(currentNum);
+            first = double.Parse(currentNum);
             divide = true;
             second = true;
             currentNum = "";
@@ -191,7 +199,7 @@ namespace AdvancedCalculator
 
         private void Plus_Click(object sender, RoutedEventArgs e)
         {
-            first = Int32.Parse(currentNum);
+            first = double.Parse(currentNum);
             add = true;
             second = true;
             currentNum = "";
@@ -199,7 +207,7 @@ namespace AdvancedCalculator
 
         private void Minus_Click(object sender, RoutedEventArgs e)
         {
-            first = Int32.Parse(currentNum);
+            first = double.Parse(currentNum);
             subtract = true;
             second = true;
         }
@@ -208,25 +216,55 @@ namespace AdvancedCalculator
         {
             if (multi == true)
             {
-                int answer = first * Int32.Parse(currentNum);
+                double answer = first * double.Parse(currentNum);
                 text2.Text = answer.ToString();
             }
 
             else if (divide == true)
             {
-                float answer = first / float.Parse(currentNum);
+                double answer = first / double.Parse(currentNum);
                 text2.Text = answer.ToString();
             }
 
             else if (add == true)
             {
-                int answer = first + Int32.Parse(currentNum);
+                double answer = first + double.Parse(currentNum);
                 text2.Text = answer.ToString();
             }
 
             else if (subtract == true)
             {
-                int answer = first - Int32.Parse(currentNum);
+                double answer = first - double.Parse(currentNum);
+                text2.Text = answer.ToString();
+            }
+
+            else if (func_cos == true)
+            {
+                double answer = Math.Cos(angleNum);
+                text2.Text = answer.ToString();
+            }
+
+            else if (func_sin == true)
+            {
+                double answer = Math.Sin(angleNum);
+                text2.Text = answer.ToString();
+            }
+
+            else if (func_tan == true)
+            {
+                double answer = Math.Tan(angleNum);
+                text2.Text = answer.ToString();
+            }
+
+            else if (func_sqrt == true)
+            {
+                double answer = Math.Sqrt(sqrNum);
+                text2.Text = answer.ToString();
+            }
+
+            else if (squared == true)
+            {
+                double answer = Math.Pow(sqrNum, 2);
                 text2.Text = answer.ToString();
             }
         }
@@ -246,7 +284,11 @@ namespace AdvancedCalculator
             first = 0;
             second = false;
 
-
+            func_cos = false;
+            func_sin = false;
+            func_tan = false;
+            func_sqrt = false;
+            squared = false;
         }
 
         private void leftParen_Click(object sender, RoutedEventArgs e)
@@ -261,7 +303,13 @@ namespace AdvancedCalculator
 
         private void _decimal_Click(object sender, RoutedEventArgs e)
         {
-            currentNum = ".";
+            decimalNum = ".";
+            if (!second)
+            {
+                text1.Text = currentNum + decimalNum;
+            }
+            else
+                text3.Text = currentNum;
         }
 
         private void positiveNegative_Click(object sender, RoutedEventArgs e)
@@ -271,27 +319,47 @@ namespace AdvancedCalculator
 
         private void Square_Click(object sender, RoutedEventArgs e)
         {
-            currentNum = "sqr(";
+            //currentNum = "sqr(";
+            text1.Text = currentNum;
+
+            sqrNum = double.Parse(currentNum);
+            squared = true;
         }
 
         private void Sqrt_Click(object sender, RoutedEventArgs e)
         {
-            currentNum = "sqrt(";
+            //currentNum = "sqrt(";
+            text1.Text = currentNum;
+
+            sqrNum = double.Parse(currentNum);
+            func_sqrt = true;
         }
 
         private void tangent_Click(object sender, RoutedEventArgs e)
         {
-            currentNum = "tan(";
+            //currentNum = "tan(";
+            text1.Text = currentNum;
+
+            angleNum = double.Parse(currentNum);
+            func_tan = true;
         }
 
         private void sine_Click(object sender, RoutedEventArgs e)
         {
-            currentNum = "sin(";
+            //currentNum = "sin(";
+            text1.Text = currentNum;
+
+            angleNum = double.Parse(currentNum);
+            func_sin = true;
         }
 
         private void cosine_Click(object sender, RoutedEventArgs e)
         {
-            currentNum = "cos(";
+            //currentNum = "cos";
+            text1.Text = currentNum;
+
+            angleNum = double.Parse(currentNum);
+            func_cos = true;                
         }
     }
 }
