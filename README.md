@@ -12,5 +12,16 @@ Good coding style is important
 - If statements/ switch statements
 
 Additional features i.e. scientific etc. will be rewarded as extra credit 
+Extra Features Include:
+- Exponents
+- Trigonometric Functions (Cosine, Sine, and Tangent)
+- Squared numbers
+- Square Roots
+- Percent Conversions
+- Decimals
+- Negative Numbers
+
+
+GitHub Repository: https://github.com/Jagod101/VisualCalculator
 
 Authors: Ashley Wood and Zach Jagoda

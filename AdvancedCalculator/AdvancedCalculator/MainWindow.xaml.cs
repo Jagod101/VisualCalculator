@@ -26,9 +26,9 @@ namespace AdvancedCalculator
         }
 
         String currentNum = "";
-        String decimalNum = "";
         double first = 0;
         double angleNum;
+        double percentNum;
         double sqrNum;
         bool second = false;
         bool multi = false;
@@ -40,7 +40,10 @@ namespace AdvancedCalculator
         bool func_tan = false;
         bool func_sqrt = false;
         bool squared = false;
-
+        bool percent_func = false;
+        bool func_expo = false;
+        
+        //functions which call upon the assigned number value between 0-9
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             currentNum += "1";
@@ -180,7 +183,10 @@ namespace AdvancedCalculator
                 text3.Text = currentNum;
             }
         }
-
+        /*
+            Repetitive, but if an Operation Button is triggered it stores the first variable and sets second equal to true,
+            allowing for the next input number to also be stored/used when the equal button is triggered
+        */
         private void Multiply_Click(object sender, RoutedEventArgs e)
         {
             first = double.Parse(currentNum);
@@ -214,63 +220,78 @@ namespace AdvancedCalculator
 
         private void Equals_Click(object sender, RoutedEventArgs e)
         {
+            //If boolean flag has been set to true based on the Operation button, then that function will be triggered below
+            //Function for Multiplication
             if (multi == true)
             {
                 double answer = first * double.Parse(currentNum);
                 text2.Text = answer.ToString();
             }
-
+            //Function for Division
             else if (divide == true)
             {
                 double answer = first / double.Parse(currentNum);
                 text2.Text = answer.ToString();
             }
-
+            //Function for Addition
             else if (add == true)
             {
                 double answer = first + double.Parse(currentNum);
                 text2.Text = answer.ToString();
             }
-
+            //Function for Subtraction
             else if (subtract == true)
             {
                 double answer = first - double.Parse(currentNum);
                 text2.Text = answer.ToString();
             }
-
+            //Cosine Function
             else if (func_cos == true)
             {
                 double answer = Math.Cos(angleNum);
                 text2.Text = answer.ToString();
             }
-
+            //Sine Function
             else if (func_sin == true)
             {
                 double answer = Math.Sin(angleNum);
                 text2.Text = answer.ToString();
             }
-
+            //Tangent Function
             else if (func_tan == true)
             {
                 double answer = Math.Tan(angleNum);
                 text2.Text = answer.ToString();
             }
-
+            //Square Root Function
             else if (func_sqrt == true)
             {
                 double answer = Math.Sqrt(sqrNum);
                 text2.Text = answer.ToString();
             }
-
+            //Squared Function
             else if (squared == true)
             {
                 double answer = Math.Pow(sqrNum, 2);
+                text2.Text = answer.ToString();
+            }
+            //Exponents Function
+            else if (func_expo == true)
+            {
+                double answer = Math.Pow(sqrNum, double.Parse(currentNum));
+                text2.Text = answer.ToString();
+            }
+            //Percent Function 
+            else if (percent_func == true)
+            {
+                double answer = percentNum / 100;
                 text2.Text = answer.ToString();
             }
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
+            //Upon a Calculator Clear, all boolean values are reset to be equal to false, all text cleared, and all strings reset
             multi = false;
             divide = false;
             add = false;
@@ -289,24 +310,56 @@ namespace AdvancedCalculator
             func_tan = false;
             func_sqrt = false;
             squared = false;
+
+            percent_func = false;
+            func_expo = false;
         }
 
-        private void leftParen_Click(object sender, RoutedEventArgs e)
+        private void percent_Click_1(object sender, RoutedEventArgs e)
         {
-            currentNum = "(";
+            //currentNum = "%";
+            if (currentNum == "")
+            {
+                MessageBox.Show("Please enter your desired value first");
+            }
+            else
+            {
+                percentNum = double.Parse(currentNum);
+                percent_func = true;
+            }
         }
 
-        private void rightParen_Click(object sender, RoutedEventArgs e)
+        private void exponent_Click_1(object sender, RoutedEventArgs e)
         {
-            currentNum = ")";
+            //currentNum = "^x";
+            if (currentNum == "")
+            {
+                MessageBox.Show("Please enter your desired value first");
+            }
+            else
+            {
+                if (!second)
+                {
+                    text1.Text = currentNum;
+                    sqrNum = double.Parse(currentNum);
+                    second = true;
+                    currentNum = "";
+                }
+                else
+                {
+                    text3.Text = currentNum;
+                }
+
+                func_expo = true;
+            }
         }
 
         private void _decimal_Click(object sender, RoutedEventArgs e)
         {
-            decimalNum = ".";
+            currentNum += ".";
             if (!second)
             {
-                text1.Text = currentNum + decimalNum;
+                text1.Text = currentNum;
             }
             else
                 text3.Text = currentNum;
@@ -314,16 +367,28 @@ namespace AdvancedCalculator
 
         private void positiveNegative_Click(object sender, RoutedEventArgs e)
         {
-            currentNum = "-";
+            currentNum += "-";
+            if (!second)
+            {
+                text1.Text = currentNum;
+            }
+            else
+                text3.Text = currentNum;
         }
 
         private void Square_Click(object sender, RoutedEventArgs e)
         {
             //currentNum = "sqr(";
             text1.Text = currentNum;
-
-            sqrNum = double.Parse(currentNum);
-            squared = true;
+            if (currentNum == "")
+            {
+                MessageBox.Show("Please enter your desired value first");
+            }
+            else
+            {
+                sqrNum = double.Parse(currentNum);
+                squared = true;
+            }
         }
 
         private void Sqrt_Click(object sender, RoutedEventArgs e)
@@ -331,8 +396,15 @@ namespace AdvancedCalculator
             //currentNum = "sqrt(";
             text1.Text = currentNum;
 
-            sqrNum = double.Parse(currentNum);
-            func_sqrt = true;
+            if (currentNum == "")
+            {
+                MessageBox.Show("Please enter your desired value first");
+            }
+            else
+            {
+                sqrNum = double.Parse(currentNum);
+                func_sqrt = true;
+            }
         }
 
         private void tangent_Click(object sender, RoutedEventArgs e)
@@ -340,8 +412,15 @@ namespace AdvancedCalculator
             //currentNum = "tan(";
             text1.Text = currentNum;
 
-            angleNum = double.Parse(currentNum);
-            func_tan = true;
+            if (currentNum == "")
+            {
+                MessageBox.Show("Please enter your desired value first");
+            }
+            else
+            {
+                angleNum = double.Parse(currentNum);
+                func_tan = true;
+            }
         }
 
         private void sine_Click(object sender, RoutedEventArgs e)
@@ -349,8 +428,15 @@ namespace AdvancedCalculator
             //currentNum = "sin(";
             text1.Text = currentNum;
 
-            angleNum = double.Parse(currentNum);
-            func_sin = true;
+            if (currentNum == "")
+            {
+                MessageBox.Show("Please enter your desired value first");
+            }
+            else
+            {
+                angleNum = double.Parse(currentNum);
+                func_sin = true;
+            }
         }
 
         private void cosine_Click(object sender, RoutedEventArgs e)
@@ -358,8 +444,15 @@ namespace AdvancedCalculator
             //currentNum = "cos";
             text1.Text = currentNum;
 
-            angleNum = double.Parse(currentNum);
-            func_cos = true;                
+            if (currentNum == "")
+            {
+                MessageBox.Show("Please enter your desired value first");
+            }
+            else
+            {
+                angleNum = double.Parse(currentNum);
+                func_cos = true;
+            }               
         }
     }
 }
